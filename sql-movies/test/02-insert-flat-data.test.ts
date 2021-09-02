@@ -30,23 +30,43 @@ const insertActors = (actors: string[]) => {
 };
 
 const insertKeywords = (keywords: string[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into keywords (keyword) values` +
+    keywords.map(keyword => `('${escape(keyword)}')`).join(",")
+  );
 };
 
 const insertDirectors = (directors: string[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into directors (full_name) values` +
+    directors.map(director => `('${escape(director)}')`).join(",")
+  );
 };
 
 const insertGenres = (genres: string[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into genres (genre) values` +
+    genres.map(genre => `('${escape(genre)}')`).join(",")
+  );
 };
 
 const insertProductionCompanies = (companies: string[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into production_companies (company_name) values` +
+    companies.map(company => `('${escape(company)}')`).join(",")
+  );
 };
 
 const insertMovies = (movies: Movie[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into movies (imdb_id, popularity, budget, budget_adjusted, revenue,
+       revenue_adjusted, original_title, homepage, tagline, overview, runtime, release_date) values ` +
+       movies.map(movie =>
+         `('${escape(movie.imdbId)}', ${movie.popularity}, ${movie.budget}, ${movie.budgetAdjusted}, ${movie.revenue},
+          ${movie.revenueAdjusted}, '${escape(movie.originalTitle)}', '${escape(movie.homepage)}', '${escape(movie.tagline || "")}', '${escape(movie.overview)}',
+          ${movie.runtime}, '${escape(movie.releaseDate)}')`
+        ).join(", ")
+  );
 };
 
 describe("Insert Flat Data", () => {
@@ -55,7 +75,7 @@ describe("Insert Flat Data", () => {
   beforeAll(async () => {
     db = await Database.fromExisting("01", "02");
     await CsvLoader.load();
-  }, minutes(1));
+  }, minutes(10));
 
   it(
     "should insert actors",
@@ -76,7 +96,7 @@ describe("Insert Flat Data", () => {
 
       done();
     },
-    minutes(1)
+    minutes(10)
   );
 
   it(
@@ -98,7 +118,7 @@ describe("Insert Flat Data", () => {
 
       done();
     },
-    minutes(1)
+    minutes(10)
   );
 
   it(
@@ -120,7 +140,7 @@ describe("Insert Flat Data", () => {
 
       done();
     },
-    minutes(1)
+    minutes(10)
   );
 
   it(
@@ -139,7 +159,7 @@ describe("Insert Flat Data", () => {
 
       done();
     },
-    minutes(1)
+    minutes(10)
   );
 
   it(
@@ -163,14 +183,14 @@ describe("Insert Flat Data", () => {
 
       done();
     },
-    minutes(1)
+    minutes(10)
   );
 
   it(
     "should insert movies",
     async done => {
       const movies = await CsvLoader.movies();
-      const chunks = _.chunk(movies, 500);
+      const chunks = _.chunk(movies, 10);
 
       for (const ch of chunks) {
         await db.insert(insertMovies(ch));
@@ -185,6 +205,6 @@ describe("Insert Flat Data", () => {
 
       done();
     },
-    minutes(1)
+    minutes(10)
   );
 });
