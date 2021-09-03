@@ -16,7 +16,7 @@ const CREATE_MOVIE_GENRES_TABLE =`
     genre_id integer not null,
     foreign key(movie_id) references movies(id)
     foreign key(genre_id) references genres(id)
-    primary key(movie_id, genre_id)
+    primary key(movie_id, genre_id)    
   )`;
 
 const CREATE_MOVIE_ACTORS_TABLE =`
@@ -37,12 +37,11 @@ const CREATE_MOVIE_DIRECTORS_TABLE = `
     primary key(movie_id, director_id)
   )`;
 
-
 const CREATE_MOVIE_KEYWORDS_TABLE = `
   create table ${MOVIE_KEYWORDS}(
     movie_id integer not null,
     keyword_id integer not null,
-    foreign key(movie_id) references movies(movie_id),
+    foreign key(movie_id) references movies(id),
     foreign key(keyword_id) references keywords(id),
     primary key(movie_id, keyword_id)
   )`;
@@ -51,7 +50,7 @@ const CREATE_MOVIE_PRODUCTION_COMPANIES_TABLE = `
   create table ${MOVIE_PRODUCTION_COMPANIES}(
     movie_id integer not null,
     company_id integer not null,
-    foreign key(movie_id) references movies(movie_id),
+    foreign key(movie_id) references movies(id),
     foreign key(company_id) references production_companies(id),
     primary key(movie_id, company_id)
   )`;

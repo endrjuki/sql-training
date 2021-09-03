@@ -25,7 +25,6 @@ const CREATE_MOVIES_TABLE = `CREATE TABLE movies (
   overview text NOT NULL,
   runtime integer NOT NULL,
   release_date text NOT NULL
-
 );`
 
 const CREATE_MOVIE_RATINGS_TABLE = `CREATE TABLE movie_ratings (
@@ -33,7 +32,8 @@ const CREATE_MOVIE_RATINGS_TABLE = `CREATE TABLE movie_ratings (
   movie_id integer NOT NULL,
   rating real NOT NULL,
   time_created text NOT NULL,
-  PRIMARY KEY(user_id, movie_id)
+  primary key(user_id, movie_id),
+  foreign key(movie_id) references movies(id)
 );`;
 
 const CREATE_ACTORS_TABLE = `CREATE TABLE actors (
