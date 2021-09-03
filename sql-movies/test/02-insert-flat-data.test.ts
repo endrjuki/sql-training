@@ -190,7 +190,7 @@ describe("Insert Flat Data", () => {
     "should insert movies",
     async done => {
       const movies = await CsvLoader.movies();
-      const chunks = _.chunk(movies, 10);
+      const chunks = _.chunk(movies, 500);
 
       for (const ch of chunks) {
         await db.insert(insertMovies(ch));

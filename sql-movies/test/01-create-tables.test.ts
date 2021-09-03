@@ -12,7 +12,7 @@ import {
 import { tableInfo, indexList } from "../src/queries/table-info";
 
 const CREATE_MOVIES_TABLE = `CREATE TABLE movies (
-  id integer NOT NULL PRIMARY KEY,
+  id integer NOT NULL PRIMARY KEY autoincrement,
   imdb_id text NOT NULL,
   popularity real NOT NULL,
   budget real NOT NULL,
@@ -37,27 +37,27 @@ const CREATE_MOVIE_RATINGS_TABLE = `CREATE TABLE movie_ratings (
 );`;
 
 const CREATE_ACTORS_TABLE = `CREATE TABLE actors (
-  id integer NOT NULL PRIMARY KEY,
+  id integer NOT NULL PRIMARY KEY autoincrement,
   full_name text NOT NULL
 );`;
 
 const CREATE_KEYWORDS_TABLE = `CREATE TABLE keywords (
-  id integer NOT NULL PRIMARY KEY,
+  id integer NOT NULL PRIMARY KEY autoincrement,
   keyword text NOT NULL
 );`;  
 
 const CREATE_DIRECTORS_TABLE = `CREATE TABLE directors  (
-  id integer NOT NULL PRIMARY KEY,
+  id integer NOT NULL PRIMARY KEY autoincrement,
   full_name text NOT NULL
 );`;
 
 const CREATE_GENRES_TABLE = `CREATE TABLE genres  (
-  id integer NOT NULL PRIMARY KEY,
+  id integer NOT NULL PRIMARY KEY autoincrement,
   genre text NOT NULL
 );`;
 
 const CREATE_PRODUCTION_COMPANIES_TABLE = `CREATE TABLE production_companies  (
-  id integer NOT NULL PRIMARY KEY,
+  id integer NOT NULL PRIMARY KEY autoincrement,
   company_name text NOT NULL
 );`;
 

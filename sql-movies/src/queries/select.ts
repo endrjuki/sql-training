@@ -19,27 +19,27 @@ export const selectProductionCompany = (company: string): string => {
 };
 
 export const selectMovieById = (id: number): string => {
-  throw new Error(`todo`);
+  return `select * from movies where id = ${id}`;
 };
 
 export const selectGenreById = (id: number): string => {
-  throw new Error(`todo`);
+  return `select * from genres where id = ${id}`;
 };
 
 export const selectDirectorById = (id: number): string => {
-  throw new Error(`todo`);
+  return `select * from directors where id = ${id}`;
 };
 
 export const selectActorById = (id: number): string => {
-  throw new Error(`todo`);
+  return `select * from actors where id = ${id}`;
 };
 
 export const selectKeywordById = (id: number): string => {
-  throw new Error(`todo`);
+  return `select * from keywords where id = ${id}`;
 };
 
 export const selectProductionCompanyById = (id: number): string => {
-  throw new Error(`todo`);
+  return `select * from production_companies where id = ${id}`;
 };
 
 export const selectMovie = (imdbId: string): string => {
