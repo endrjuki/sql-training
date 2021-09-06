@@ -123,3 +123,6 @@ dist
 .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+sql-shopify/_db/00-database.sqlite3
+sql-shopify/_db/01-database.sqlite3
+sql-shopify/_db/02-database.sqlite3
