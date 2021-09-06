@@ -126,3 +126,8 @@ dist
 sql-shopify/_db/00-database.sqlite3
 sql-shopify/_db/01-database.sqlite3
 sql-shopify/_db/02-database.sqlite3
+sql-shopify/_db/02-database.sqlite3-journal
+sql-shopify/_db/03-database.sqlite3
+sql-shopify/_db/04-database.sqlite3
+sql-shopify/_db/05-database.sqlite3
+sql-shopify/_db/06-database.sqlite3
