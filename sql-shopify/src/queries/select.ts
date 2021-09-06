@@ -30,7 +30,7 @@ export const selectUnigueRowCount = (tableName: string, columnName: string): str
 };
 
 export const selectReviewByAppIdAuthor = (appId: number, author: string): string => {
-  return `select * from ${REVIEWS} where app_id = ${appId} and author = ${author} `;
+  return `select * from ${REVIEWS} where app_id = ${appId} and author = '${author}'`;
 };
 
 export const selectColumnFromTable = (columnName: string, tableName: string): string => {

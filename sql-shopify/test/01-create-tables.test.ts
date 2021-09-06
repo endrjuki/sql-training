@@ -37,8 +37,7 @@ const CREATE_CATEGORIES_TABLE =
 const CREATE_APPS_CATEGORIES_TABLE =
                                     `create table ${APPS_CATEGORIES}(
                                         app_id integer not null,
-                                        category_id integer not null,
-                                        foreign key(app_id) references ${APPS}(id)
+                                        category_id integer not null,                                        
                                         foreign key(category_id) references ${CATEGORIES}(id)
                                         primary key(app_id, category_id)
                                     )`;
@@ -47,8 +46,7 @@ const CREATE_KEY_BENEFITS_TABLE =
                                     `create table ${KEY_BENEFITS}(
                                         app_id integer not null,
                                         title text not null,
-                                        description text not null,
-                                        foreign key(app_id) references ${APPS}(id)
+                                        description text not null,                                        
                                         primary key(app_id, title)
                                     )`;
 
@@ -65,6 +63,7 @@ const CREATE_APPS_PRICING_PLANS_TABLE =
                                             app_id integer not null,
                                             pricing_plan_id integer not null,
                                             foreign key(app_id) references ${APPS}(id)
+                                            foreign key(pricing_plan_id) references ${PRICING_PLANS}(id)
                                             primary key (app_id, pricing_plan_id)
                                         )`;
 

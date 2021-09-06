@@ -2,7 +2,7 @@ import _ from "lodash";
 import { Database } from "../src/database";
 import { selectRowById } from "../src/queries/select";
 import { minutes } from "./utils";
-import { CATEGORIES, PRICING_PLANS, APPS } from "../src/shopify-table-names";
+import { CATEGORIES, PRICING_PLANS, APPS, APPS_PRICING_PLANS } from "../src/shopify-table-names";
 
 describe("Foreign Keys", () => {
     let db: Database;
@@ -17,7 +17,7 @@ describe("Foreign Keys", () => {
         const query = `delete from ${CATEGORIES} where id = ${categoryId}`;
         try {
             await db.delete(query);
-          } catch (e) { console.log(e) }
+          } catch (e) { }
 
         const row = await db.selectSingleRow(selectRowById(categoryId, CATEGORIES));
         expect(row).toBeDefined();
@@ -31,7 +31,7 @@ describe("Foreign Keys", () => {
 
         try {
             await db.delete(query);
-          } catch (e) { console.log(e) }
+          } catch (e) { }
 
         const rows = await db.selectSingleRow(selectRowById(pricingPlanId, PRICING_PLANS));
         expect(rows).toBeDefined();
@@ -45,7 +45,7 @@ describe("Foreign Keys", () => {
 
         try {
             await db.delete(query);
-          } catch (e) { console.log(e) }
+          } catch (e) { }
 
         const rows = await db.selectSingleRow(selectRowById(appId, APPS));
         expect(rows).toBeDefined();
@@ -55,8 +55,10 @@ describe("Foreign Keys", () => {
 
     it("should be able to delete app", async done => {
         const appId = 355;
+        const removePaymentPlanQuery = `delete from ${APPS_PRICING_PLANS} where app_id = ${appId}`
         const query = `delete from ${APPS} where id = ${appId}`;
         try {
+            await db.delete(removePaymentPlanQuery);
             await db.delete(query);
           } catch (e) { console.log(e) }
 
