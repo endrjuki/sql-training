@@ -207,7 +207,7 @@ describe("Insert Data", () => {
 
         done();
     },
-    minutes(2)
+    minutes(3)
 );
 
     it("should insert apps pricing plans data", async done => {
